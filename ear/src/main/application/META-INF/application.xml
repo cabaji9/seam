@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+  <initialize-in-order>true</initialize-in-order>
+  <display-name>seam-old-ear</display-name>
+  <module>
+    <web>
+      <web-uri>seam-old-web.war</web-uri>
+      <context-root>/seam-old-web</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>seam-old-ejb.jar</ejb>
+  </module>
+  <module>
+    <ejb>jboss-seam.jar</ejb>
+  </module>
+  <library-directory>lib</library-directory>
+</application>

@@ -1,0 +1,61 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <deployment>
+
+        <exclusions>
+            <module name="javax.faces.api" slot="main"/>
+            <module name="com.sun.jsf-impl" slot="main"/>
+            <module name="org.jboss.as.jsf-injection" slot="main" />
+            <module name="org.hibernate" slot="main"/>
+            <module name="org.hibernate.envers" slot="main"/>
+            <module name="org.hibernate.validator" slot="main"/>
+            <module name="asm.asm" slot="main" />
+
+        </exclusions>
+        <dependencies>
+            <module name="org.apache.log4j" />
+            <module name="org.dom4j" />
+            <module name="org.apache.commons.logging" />
+            <module name="org.apache.commons.collections" />
+        </dependencies>
+    </deployment>
+    <sub-deployment name="jboss-seam.jar">
+        <dependencies>
+            <module name="org.apache.log4j" />
+            <module name="org.dom4j" />
+            <module name="org.apache.commons.logging" />
+            <module name="org.apache.commons.collections" />
+        </dependencies>
+    </sub-deployment>
+    <sub-deployment name="seam-old-ejb.jar">
+
+        <exclusions>
+            <module name="javax.faces.api" slot="main"/>
+            <module name="com.sun.jsf-impl" slot="main"/>
+            <module name="org.jboss.as.jsf-injection" slot="main" />
+            <module name="org.hibernate" slot="main"/>
+            <module name="org.hibernate.envers" slot="main"/>
+            <module name="org.hibernate.validator" slot="main"/>
+            <module name="asm.asm" slot="main" />
+
+        </exclusions>
+        <dependencies>
+            <module name="org.apache.log4j" />
+            <module name="org.dom4j" />
+            <module name="org.apache.commons.logging" />
+            <module name="org.apache.commons.collections" />
+        </dependencies>
+    </sub-deployment>
+    <sub-deployment name="seam-old-web.war">
+        <exclusions>
+            <module name="javax.faces.api" slot="main"/>
+            <module name="com.sun.jsf-impl" slot="main"/>
+            <module name="org.jboss.as.jsf-injection" slot="main" />
+        </exclusions>
+        <dependencies>
+            <module name="org.apache.log4j" />
+            <module name="org.dom4j" />
+            <module name="org.apache.commons.logging" />
+            <module name="org.apache.commons.collections" />
+        </dependencies>
+    </sub-deployment>
+</jboss-deployment-structure>

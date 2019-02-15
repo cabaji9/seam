@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns="http://jboss.com/products/seam/components"
+            xmlns:core="http://jboss.com/products/seam/core"
+            xmlns:persistence="http://jboss.com/products/seam/persistence"
+            xmlns:security="http://jboss.com/products/seam/security" xmlns:theme="http://jboss.com/products/seam/theme"
+            xmlns:web="http://jboss.com/products/seam/web" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jboss.com/products/seam/core http://jboss.com/products/seam/core-2.2.xsd
+            http://jboss.com/products/seam/persistence http://jboss.com/products/seam/persistence-2.2.xsd
+            http://jboss.com/products/seam/security http://jboss.com/products/seam/security-2.2.xsd
+            http://jboss.com/products/seam/web http://jboss.com/products/seam/web-2.2.xsd
+            http://jboss.com/products/seam/components http://jboss.com/products/seam/components-2.2.xsd
+            http://jboss.com/products/seam/theme http://jboss.com/products/seam/theme-2.1.xsd
+            http://jboss.com/products/seam/async http://jboss.com/products/seam/async-2.1.xsd"
+            xmlns:async="http://jboss.com/products/seam/async">
+    <core:init debug="false" jndi-pattern="java:app/seam-old-ejb/#{ejbName}"/>
+    <core:manager concurrent-request-timeout="1500"
+                  conversation-id-parameter="cid" conversation-timeout="600000" parent-conversation-id-parameter="pid"/>
+    <!-- Make sure this URL pattern is the same as that used by the Faces Servlet -->
+    <web:hot-deploy-filter url-pattern="*.seam"/>
+    <persistence:managed-persistence-context name="entityManager"
+                                             persistence-unit-jndi-name="java:/mupiEntityManagerFactory"/>
+    <persistence:managed-persistence-context auto-create="true" name="salesEntityManager"
+                                             persistence-unit-jndi-name="java:/salesLogixEntityManagerFactory"/>
+    <persistence:managed-persistence-context auto-create="true" name="bxDesarrolloEntityManager"
+                                             persistence-unit-jndi-name="java:/bxDesarrolloEntityManagerFactory"/>
+    <persistence:managed-persistence-context auto-create="true" name="ultimusEntityManager"
+                                             persistence-unit-jndi-name="java:/ultimusEntityManagerFactory"/>
+    <persistence:managed-persistence-context auto-create="true" name="ultimusDataEntityManager"
+                                             persistence-unit-jndi-name="java:/ultimusDataEntityManagerFactory"/>
+    <persistence:managed-persistence-context auto-create="true" name="incInmobEntityManager"
+                                             persistence-unit-jndi-name="java:/incInmobEntityManagerFactory"/>
+
+
+    <security:identity authenticate-method="#{authenticator.authenticate}" remember-me="false"/>
+
+
+    <web:multipart-filter create-temp-files="true" max-request-size="20971520" url-pattern="*.seam"/>
+    <theme:theme-selector scope="APPLICATION">
+        <theme:available-themes>
+            <value>default</value>
+            <value>mupitheme</value>
+        </theme:available-themes>
+    </theme:theme-selector>
+
+    <async:quartz-dispatcher/>
+
+</components>
